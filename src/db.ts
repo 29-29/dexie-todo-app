@@ -4,7 +4,9 @@ import Dexie from 'dexie'
 interface Todo {
   id: number
   text: string
-  status: boolean
+  status: 'TODO' | 'DONE' | 'ARCHIVE'
+  // created: Date // TODO
+  // deadline: Date // TODO
 }
 
 const db = new Dexie('myDb') as Dexie & {
