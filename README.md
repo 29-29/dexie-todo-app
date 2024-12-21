@@ -1,4 +1,4 @@
-# Basic Todo App (basic-todo-app)
+# Dexie Todo App
 
 A basic todo app using Quasar > Vue and DexieJS.
 

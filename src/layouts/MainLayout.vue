@@ -10,7 +10,7 @@ function makerClick() {
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-toolbar-title>Basic Todo App</q-toolbar-title>
+        <q-toolbar-title>Dexie Todo App</q-toolbar-title>
 
         <div>Made by <q-chip clickable @click="makerClick">29-29</q-chip></div>
       </q-toolbar>
