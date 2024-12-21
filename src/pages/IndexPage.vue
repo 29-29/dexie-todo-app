@@ -12,10 +12,14 @@ const inputTodo = ref<string>()
 const todos = useObservable(from(liveQuery(async () => db.todos.toArray())))
 
 async function addTodo() {
+  if (!inputTodo.value) {
+    Notify.create('Doing nothing?')
+    return
+  }
   try {
     const id = await db.todos.add({
       text: inputTodo.value,
-      status: false,
+      status: 'TODO',
     } as Todo)
 
     Notify.create({
@@ -31,13 +35,15 @@ async function addTodo() {
 }
 </script>
 <template>
-  <q-page class="q-pa-md column">
+  <q-page class="q-pa-md column q-gutter-md">
     <div class="col-5">
-      <q-input outlined v-model="inputTodo" label="Todo" class="full-width">
-        <template #append>
-          <q-btn round flat icon="add" @click="addTodo" />
-        </template>
-      </q-input>
+      <q-form @submit="addTodo">
+        <q-input outlined v-model="inputTodo" label="Todo" class="full-width">
+          <template #append>
+            <q-btn round flat icon="add" @click="addTodo" />
+          </template>
+        </q-input>
+      </q-form>
     </div>
     <todo-list :todos="todos || []" />
   </q-page>
